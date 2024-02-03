@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Web Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #content {
+            padding: 20px;
+        }
+
+        #changeColorBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="content">
+    <h1>Welcome to the Cool Web Page!</h1>
+    <p>This is a simple example using HTML, CSS, and JavaScript.</p>
+    <button id="changeColorBtn">Change Background Color</button>
+</div>
+
+<script>
+    // JavaScript code to change background color
+    document.getElementById('changeColorBtn').addEventListener('click', function() {
+        var body = document.body;
+        var currentColor = body.style.backgroundColor || window.getComputedStyle(body, null).getPropertyValue('background-color');
+        
+        var newColor = getRandomColor();
+        while (newColor === currentColor) {
+            newColor = getRandomColor();
+        }
+
+        body.style.backgroundColor = newColor;
+    });
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>
+
+</body>
+</html>
